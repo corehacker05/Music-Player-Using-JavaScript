@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Sakshi Singh Pro Music Player</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Player Card -->
+        <div class="music-player-card">
+            <!-- Header with Brand -->
+            <div class="player-header">
+                <div class="brand-section">
+                    <div class="brand-icon">
+                        <i class="bi bi-vinyl-fill"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h1 class="brand-name">Sakshi Singh</h1>
+                        <span class="brand-subtitle">Pro Music Player</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="uploadLabelBtn" onclick="document.getElementById('mp3Upload').click()" title="Upload MP3">
+                        <i class="bi bi-cloud-arrow-up-fill"></i>
+                    </button>
+                    <input type="file" id="mp3Upload" accept="audio/mp3, audio/mpeg, audio/wav" style="display:none;" multiple>
+                    <button class="icon-btn" id="likeBtn" title="Like">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Album Art Section -->
+            <div class="cover-art-wrapper">
+                <div class="cover-art" id="coverArt">
+                    <div class="cover-glow"></div>
+                    <i class="bi bi-disc-fill" id="coverIcon"></i>
+                    <div class="equalizer-bars" id="equalizer">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="rotating-disc"></div>
+                </div>
+            </div>
+
+            <!-- Song Information -->
+            <div class="song-info-section">
+                <div class="song-info-main">
+                    <h2 class="song-title" id="songTitle">Select a Song</h2>
+                    <p class="song-artist" id="songArtist">—</p>
+                </div>
+                <div class="song-badge" id="categoryBadge">
+                    <span>🎵</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="durationTime">0:00</span>
+                </div>
+                <div class="progress-wrapper">
+                    <input type="range" id="progressBar" class="progress-slider" min="0" max="100" step="0.1" value="0">
+                    <div class="progress-hover-tip"></div>
+                </div>
+            </div>
+
+            <!-- Main Playback Controls -->
+            <div class="playback-controls">
+                <button class="control-btn" id="shuffleBtn" title="Shuffle">
+                    <i class="bi bi-shuffle"></i>
+                </button>
+                <button class="control-btn" id="prevBtn" title="Previous">
+                    <i class="bi bi-skip-backward-fill"></i>
+                </button>
+                <button class="play-pause-btn" id="playPauseBtn">
+                    <i class="bi bi-play-fill" id="playIcon"></i>
+                </button>
+                <button class="control-btn" id="nextBtn" title="Next">
+                    <i class="bi bi-skip-forward-fill"></i>
+                </button>
+                <button class="control-btn" id="repeatBtn" title="Repeat">
+                    <i class="bi bi-arrow-repeat"></i>
+                </button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-section">
+                <i class="bi bi-volume-down-fill volume-icon"></i>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
+                <i class="bi bi-volume-up-fill volume-icon"></i>
+                <span class="volume-percent" id="volumePercent">70%</span>
+            </div>
+
+            <!-- Playlist Category Tabs -->
+            <div class="playlist-tabs-section">
+                <div class="tabs-header">
+                    <span class="tabs-title"><i class="bi bi-music-note-list"></i> Your Playlist</span>
+                    <span class="song-count" id="playlistCount">0 songs</span>
+                </div>
+                <div class="category-tabs">
+                    <button class="category-tab active" data-cat="all">
+                        <i class="bi bi-grid-3x3-gap-fill"></i> All
+                    </button>
+                    <button class="category-tab" data-cat="love">
+                        <i class="bi bi-heart-fill"></i> Love
+                    </button>
+                    <button class="category-tab" data-cat="sad">
+                        <i class="bi bi-cloud-rain-fill"></i> Sad
+                    </button>
+                    <button class="category-tab" data-cat="english">
+                        <i class="bi bi-globe"></i> English
+                    </button>
+                    <button class="category-tab" data-cat="hindi">
+                        <i class="bi bi-translate"></i> Hindi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Playlist Items Container -->
+            <div class="playlist-container" id="playlistContainer">
+                <!-- Dynamic playlist items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="player-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="bi bi-soundwave"></i>
+                    <span>Sakshi Singh Pro Music Player</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="bi bi-github"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-spotify"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <i class="bi bi-c-circle"></i> 2026 Sakshi Singh · All Rights Reserved
+                </div>
+                <div class="footer-tagline">
+                    <i class="bi bi-bluetooth"></i> High-Quality Audio · Autoplay · Drag & Drop MP3
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer"></audio>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
